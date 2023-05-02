@@ -94,22 +94,4 @@ jobs:
           name: apk
           path: app/build/outputs/apk/debug/**.apk
 
-  notification_job:
-    needs: [test_job,android_test_job,assemble_job]
-    name: Notify Build Status
-    runs-on: ubuntu-latest
-    steps:
-      - uses: technote-space/workflow-conclusion-action@v1
-      - uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ env.WORKFLOW_CONCLUSION }}
-          fields: commit,ref,workflow,eventName
-          author_name: ${{ github.actor }}
-          icon_emoji: ':robot_face:'
-          username: "Nightly Build Status"
-          text: |
-            ${{ env.WORKFLOW_CONCLUSION }}:
-            https://github.com/juokibaoka/android-demo-app/actions/runs/${{ github.run_id }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
+  
