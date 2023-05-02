@@ -66,9 +66,9 @@ jobs:
       run: |
          ls app/build/kotlin
 
-    - name: ls app outputs
+    - name: ls app outputs apk
       run: |
-         ls app/build/outputs
+         ls app/build/outputs/apk
 
     - name: ls app reports
       run: |
